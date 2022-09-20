@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { ReactQueryProvider } from 'lib';
+import AppProviders from 'providers';
 import { Dummy } from 'components';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
   };
 
   return (
-    <ReactQueryProvider>
+    <AppProviders>
       <SafeAreaView style={backgroundStyle}>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -21,7 +21,7 @@ const App = () => {
         />
         <Dummy />
       </SafeAreaView>
-    </ReactQueryProvider>
+    </AppProviders>
   );
 };
 

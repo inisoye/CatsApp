@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+
+import { Box, Text } from 'lib';
 
 interface DummyProps {
   dummy?: string;
@@ -7,8 +8,8 @@ interface DummyProps {
 
 export const Dummy: React.FunctionComponent<DummyProps> = () => {
   return (
-    <View>
-      <Text>This is a dummy component with dummy text</Text>
-    </View>
+    <Box backgroundColor="background">
+      <Text variant="heading">This is a dummy component with dummy text</Text>
+    </Box>
   );
 };

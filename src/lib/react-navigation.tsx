@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@shopify/restyle';
 
 import { AllCats, LikedCats } from 'screens';
-import { AllCatsIcon, HeartIcon } from 'assets/icons';
+import { AllCatsIcon, HeartIcon } from 'assets';
 import { Theme } from 'lib';
 
 export type NavigatorParamList = {

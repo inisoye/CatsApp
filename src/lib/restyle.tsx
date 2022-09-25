@@ -25,7 +25,7 @@ const theme = createTheme({
     l: 25,
     xl: 40,
     '3xl': 100,
-    full: '100%',
+    '4xl': 150,
   },
   textVariants: {
     heading: {
@@ -45,6 +45,9 @@ const theme = createTheme({
   breakpoints: {
     phone: 0,
     tablet: 768,
+  },
+  borderRadii: {
+    standard: 10,
   },
 });
 

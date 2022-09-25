@@ -4,11 +4,13 @@ import Svg, { Path } from 'react-native-svg';
 interface HeartIconProps {
   color: string;
   size: number;
+  isTransparent?: boolean;
 }
 
 export const HeartIcon: React.FunctionComponent<HeartIconProps> = ({
   color,
   size,
+  isTransparent,
 }) => {
   return (
     <Svg
@@ -19,7 +21,7 @@ export const HeartIcon: React.FunctionComponent<HeartIconProps> = ({
       xmlns="http://www.w3.org/2000/svg">
       <Path
         d="M23.077 4.994a5.959 5.959 0 0 0-8.429 0L13.5 6.143l-1.148-1.149a5.96 5.96 0 0 0-8.429 8.428l1.149 1.149 8.428 8.428 8.428-8.428 1.149-1.149a5.96 5.96 0 0 0 0-8.428Z"
-        fill={color}
+        fill={isTransparent ? 'transparent' : color}
         stroke={color}
         strokeWidth={2}
         strokeLinecap="round"

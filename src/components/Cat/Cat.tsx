@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 
 import { Box, Text, Theme } from 'lib';
@@ -12,6 +12,10 @@ interface CatProps {
 
 export const Cat: React.FunctionComponent<CatProps> = ({ name, uri }) => {
   const { spacing, borderRadii } = useTheme<Theme>();
+
+  const likeCat = () => {
+    console.log('liking');
+  };
 
   return (
     <Box
@@ -33,9 +37,18 @@ export const Cat: React.FunctionComponent<CatProps> = ({ name, uri }) => {
           {name}
         </Text>
       </Box>
-      <Box marginLeft="m">
+
+      <Pressable
+        onPress={likeCat}
+        hitSlop={30}
+        style={({ pressed }) => [
+          {
+            transform: [{ scale: pressed ? 0.8 : 1 }],
+            marginLeft: spacing.m,
+          },
+        ]}>
         <HeartIcon isTransparent color="#BCBDBE" size={18} />
-      </Box>
+      </Pressable>
     </Box>
   );
 };

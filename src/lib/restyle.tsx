@@ -26,6 +26,7 @@ const theme = createTheme({
     xl: 40,
     '3xl': 100,
     '4xl': 150,
+    full: '100%',
   },
   textVariants: {
     heading: {

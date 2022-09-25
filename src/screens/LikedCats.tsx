@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-import { Box, NavigatorParamList, Text } from 'lib';
+import { Box, NavigatorParamList } from 'lib';
 import { SafeAreaView, ScreenHeading } from 'components';
 
 interface LikedCatsProps
@@ -10,9 +10,8 @@ interface LikedCatsProps
 export const LikedCats: React.FunctionComponent<LikedCatsProps> = () => {
   return (
     <SafeAreaView>
-      <Box flex={1} backgroundColor="background" paddingHorizontal="l">
+      <Box flex={1} backgroundColor="background">
         <ScreenHeading />
-        <Text variant="heading">Liked</Text>
       </Box>
     </SafeAreaView>
   );

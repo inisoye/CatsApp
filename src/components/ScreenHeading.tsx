@@ -7,7 +7,7 @@ export const ScreenHeading: React.FunctionComponent = () => {
   const { name } = useRoute();
 
   return (
-    <Box backgroundColor="background" paddingVertical="l">
+    <Box backgroundColor="background" padding="l">
       <Text variant="heading" textTransform="capitalize">
         {name}
       </Text>

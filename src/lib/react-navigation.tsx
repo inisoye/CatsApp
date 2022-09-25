@@ -15,7 +15,7 @@ export type NavigatorParamList = {
 
 const Tab = createBottomTabNavigator<NavigatorParamList>();
 
-export const AllScreens: React.FunctionComponent = () => {
+export const AppScreens: React.FunctionComponent = () => {
   const theme = useTheme<Theme>();
   const { primary } = theme.colors;
   const { tab } = theme.textVariants;

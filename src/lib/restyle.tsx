@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
 import {
   createBox,
   createText,
@@ -26,13 +25,13 @@ const theme = createTheme({
     l: 25,
     xl: 40,
     '3xl': 100,
+    full: '100%',
   },
   textVariants: {
     heading: {
       fontSize: 16,
       color: 'primary',
-      /* Roboto is heavier than San Francisco at the same weight. */
-      fontWeight: Platform.OS === 'ios' ? '600' : '500',
+      fontWeight: '600',
     },
     regular: {
       fontSize: 16,
@@ -40,7 +39,7 @@ const theme = createTheme({
     },
     tab: {
       fontSize: 13,
-      color: 'primary',
+      marginTop: 2,
     },
   },
   breakpoints: {

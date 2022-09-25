@@ -1,1 +1,2 @@
-export * from './dummy';
+export * from './SafeAreaView';
+export * from './ScreenHeading';

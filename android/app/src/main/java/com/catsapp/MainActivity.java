@@ -3,6 +3,8 @@ package com.catsapp;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import android.os.Bundle;
+
 
 public class MainActivity extends ReactActivity {
 
@@ -13,6 +15,14 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "CatsApp";
+  }
+
+  /**
+   * Required by react-navigation for react-native-screens to work well on Android devices. 
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 
   /**

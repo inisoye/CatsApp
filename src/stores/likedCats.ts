@@ -1,27 +1,35 @@
 import create from 'zustand';
 
 export interface LikedCat {
-  id: string;
-  name: string;
-  imageUri: string;
+  id: string | undefined;
+  name: string | undefined;
+  uri: string | undefined;
 }
 
-interface LikedCatsStore {
+export interface LikedCatsStore {
   likedCats: LikedCat[];
-  likeCat: (cat: LikedCat) => void;
-  unlikeCat: (id: string) => void;
+  toggleCat: (cat: LikedCat, isCatLiked: boolean) => void;
 }
 
-export const useNotificationStore = create<LikedCatsStore>(set => ({
+const useLikedCatsStore = create<LikedCatsStore>(set => ({
   likedCats: [],
 
-  likeCat: cat =>
-    set(state => ({
-      likedCats: [...state.likedCats, { ...cat }],
-    })),
-
-  unlikeCat: id =>
-    set(state => ({
-      likedCats: state.likedCats.filter(cat => cat.id !== id),
-    })),
+  toggleCat: (toggledCat, isCatLiked) =>
+    set(state => {
+      return {
+        likedCats: isCatLiked
+          ? state.likedCats.filter(cat => cat.id !== toggledCat.id) // New state with liked cat
+          : [...state.likedCats, { ...toggledCat }], // New state without unliked cat
+      };
+    }),
 }));
+
+const toggleCatSelector = (state: LikedCatsStore) => state.toggleCat;
+const likedCatsSelector = (state: LikedCatsStore) => state.likedCats;
+
+export const useLikedCatsStoreItems = () => {
+  const toggleCat = useLikedCatsStore(toggleCatSelector);
+  const likedCats = useLikedCatsStore(likedCatsSelector);
+
+  return { toggleCat, likedCats };
+};

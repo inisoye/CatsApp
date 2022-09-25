@@ -4,17 +4,25 @@ import { useTheme } from '@shopify/restyle';
 
 import { Box, Text, Theme } from 'lib';
 import { HeartIcon } from 'assets';
+import { useLikedCatsStoreItems } from 'stores';
 
 interface CatProps {
+  id: string | undefined;
   name: string | undefined;
   uri: string | undefined;
 }
 
-export const Cat: React.FunctionComponent<CatProps> = ({ name, uri }) => {
-  const { spacing, borderRadii } = useTheme<Theme>();
+export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
+  const { spacing, borderRadii, colors } = useTheme<Theme>();
+  const { toggleCat, likedCats } = useLikedCatsStoreItems();
 
-  const likeCat = () => {
-    console.log('liking');
+  const isCatLiked = React.useMemo(
+    () => !!likedCats.find(cat => cat.id === id),
+    [id, likedCats],
+  );
+
+  const handlePress = () => {
+    toggleCat({ id, name, uri }, isCatLiked);
   };
 
   return (
@@ -39,15 +47,19 @@ export const Cat: React.FunctionComponent<CatProps> = ({ name, uri }) => {
       </Box>
 
       <Pressable
-        onPress={likeCat}
+        onPress={handlePress}
         hitSlop={30}
         style={({ pressed }) => [
           {
-            transform: [{ scale: pressed ? 0.8 : 1 }],
+            transform: [{ scale: pressed ? 0.7 : 1 }],
             marginLeft: spacing.m,
           },
         ]}>
-        <HeartIcon isTransparent color="#BCBDBE" size={18} />
+        <HeartIcon
+          isTransparent={!isCatLiked}
+          color={isCatLiked ? colors.heart : '#BCBDBE'}
+          size={18}
+        />
       </Pressable>
     </Box>
   );

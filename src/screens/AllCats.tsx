@@ -11,7 +11,7 @@ interface AllCatsProps
   extends BottomTabScreenProps<NavigatorParamList, 'All cats'> {}
 
 const renderItem: ListRenderItem<Breed> = ({ item }) => {
-  return <Cat name={item.name} uri={item.image?.url} />;
+  return <Cat name={item.name} uri={item.image?.url} id={item.id} />;
 };
 
 export const AllCats: React.FunctionComponent<AllCatsProps> = () => {

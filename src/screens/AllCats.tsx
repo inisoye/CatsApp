@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { FlatList, type ListRenderItem } from 'react-native';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-import { Box, NavigatorParamList, Text } from 'lib';
+import { Box, type NavigatorParamList, Text } from 'lib';
 import { Cat, SafeAreaView, ScreenHeading } from 'components';
 import { useBreeds } from 'api';
-import { Breed } from 'types';
+import type { Breed } from 'types';
 
 interface AllCatsProps
   extends BottomTabScreenProps<NavigatorParamList, 'All cats'> {}

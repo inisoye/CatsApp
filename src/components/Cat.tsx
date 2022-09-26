@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Image, Pressable } from 'react-native';
+import { Image } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 
 import { Box, Text, Theme } from 'lib';
-import { HeartIcon } from 'assets';
 import { useLikedCatsStoreItems } from 'stores';
+import { LikeButton } from './LikeButton';
 
 interface CatProps {
   id: string | undefined;
@@ -13,7 +13,7 @@ interface CatProps {
 }
 
 export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
-  const { spacing, borderRadii, colors } = useTheme<Theme>();
+  const { spacing, borderRadii } = useTheme<Theme>();
   const { toggleCat, likedCats } = useLikedCatsStoreItems();
 
   const isCatLiked = React.useMemo(
@@ -46,21 +46,7 @@ export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
         </Text>
       </Box>
 
-      <Pressable
-        onPress={handlePress}
-        hitSlop={30}
-        style={({ pressed }) => [
-          {
-            transform: [{ scale: pressed ? 0.7 : 1 }],
-            marginLeft: spacing.m,
-          },
-        ]}>
-        <HeartIcon
-          isTransparent={!isCatLiked}
-          color={isCatLiked ? colors.heart : '#BCBDBE'}
-          size={18}
-        />
-      </Pressable>
+      <LikeButton handlePress={handlePress} isCatLiked={isCatLiked} />
     </Box>
   );
 };

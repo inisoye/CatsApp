@@ -2,6 +2,18 @@ import create from 'zustand';
 import { persist, type StateStorage } from 'zustand/middleware';
 import { MMKV } from 'react-native-mmkv';
 
+export interface LikedCat {
+  id: string | undefined;
+  name: string | undefined;
+  uri: string | undefined;
+}
+
+interface LikedCatsStore {
+  likedCats: LikedCat[];
+  unlikeCat: (id: string | undefined) => void;
+  toggleCat: (cat: LikedCat, isCatLiked: boolean) => void;
+}
+
 const storage = new MMKV();
 
 const mmkvStorage: StateStorage = {
@@ -17,21 +29,15 @@ const mmkvStorage: StateStorage = {
   },
 };
 
-interface LikedCat {
-  id: string | undefined;
-  name: string | undefined;
-  uri: string | undefined;
-}
-
-interface LikedCatsStore {
-  likedCats: LikedCat[];
-  toggleCat: (cat: LikedCat, isCatLiked: boolean) => void;
-}
-
 const useLikedCatsStore = create<LikedCatsStore>()(
   persist(
     set => ({
       likedCats: [],
+
+      unlikeCat: id =>
+        set(state => ({
+          likedCats: state.likedCats.filter(cat => cat.id !== id),
+        })),
 
       toggleCat: (toggledCat, isCatLiked) =>
         set(state => {
@@ -50,11 +56,13 @@ const useLikedCatsStore = create<LikedCatsStore>()(
 );
 
 const toggleCatSelector = (state: LikedCatsStore) => state.toggleCat;
+const unlikeCatSelector = (state: LikedCatsStore) => state.unlikeCat;
 const likedCatsSelector = (state: LikedCatsStore) => state.likedCats;
 
 export const useLikedCatsStoreItems = () => {
   const toggleCat = useLikedCatsStore(toggleCatSelector);
+  const unlikeCat = useLikedCatsStore(unlikeCatSelector);
   const likedCats = useLikedCatsStore(likedCatsSelector);
 
-  return { toggleCat, likedCats };
+  return { toggleCat, unlikeCat, likedCats };
 };

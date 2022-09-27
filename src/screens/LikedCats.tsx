@@ -27,6 +27,11 @@ export const LikedCats: React.FunctionComponent<LikedCatsProps> = () => {
       <Box flex={1} backgroundColor="background">
         <ScreenHeading />
 
+        {/**
+         * Despite its performance benefits, the use of Flashlist forgone here
+         * Its column styles are much harder to customise as columnWrapperStyle
+         * is not supported: https://shopify.github.io/flash-list/docs/usage#scrolltooffset.
+         * */}
         <FlatList
           data={likedCats}
           renderItem={renderItem}

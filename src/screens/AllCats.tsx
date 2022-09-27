@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FlatList, type ListRenderItem } from 'react-native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { FlashList, type ListRenderItem } from '@shopify/flash-list';
 
 import { Box, type NavigatorParamList, Text } from 'lib';
 import { Cat, SafeAreaView, ScreenHeading } from 'components';
@@ -26,10 +26,11 @@ export const AllCats: React.FunctionComponent<AllCatsProps> = () => {
       <Box flex={1} backgroundColor="background">
         <ScreenHeading />
 
-        <FlatList
+        <FlashList
           data={breeds}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          estimatedItemSize={60}
         />
       </Box>
     </SafeAreaView>

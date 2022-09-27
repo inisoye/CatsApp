@@ -3,12 +3,15 @@ import * as React from 'react';
 import { Box, Text } from 'lib';
 import { useLikedCatsStoreItems } from 'stores';
 import { Image, LikeButton } from 'components';
+import { getGridChildWidth } from 'utils';
 
 interface LikedCatProps {
   id: string | undefined;
   name: string | undefined;
   uri: string | undefined;
 }
+
+const childWidth = getGridChildWidth();
 
 export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
   id,
@@ -32,7 +35,7 @@ export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
         borderRadius="standard"
         height={150}
         source={{ uri }}
-        width={'100%'}
+        width={childWidth}
       />
 
       <Box

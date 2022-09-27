@@ -1,27 +1,38 @@
 import * as React from 'react';
-import { useTheme } from '@shopify/restyle';
-import { SafeAreaView as ReactNativeSafeAreaView } from 'react-native-safe-area-context';
+import {
+  SafeAreaView as ReactNativeSafeAreaView,
+  SafeAreaViewProps as ReactNativeSafeAreaViewProps,
+} from 'react-native-safe-area-context';
+import {
+  BoxProps,
+  createBox,
+  createRestyleComponent,
+  SpacingProps,
+} from '@shopify/restyle';
 
 import { Theme } from 'lib';
 
-interface SafeAreaViewProps {
-  children: React.ReactNode;
+interface SafeAreaViewProps
+  extends BoxProps<Theme>,
+    SpacingProps<Theme>,
+    ReactNativeSafeAreaViewProps {
+  children?: React.ReactNode;
 }
+
+export const StyledReactNativeSafeAreaView = createRestyleComponent<
+  SafeAreaViewProps,
+  Theme
+>([], createBox<Theme>(ReactNativeSafeAreaView));
 
 export const SafeAreaView: React.FunctionComponent<SafeAreaViewProps> = ({
   children,
 }) => {
-  const theme = useTheme<Theme>();
-  const { background } = theme.colors;
-
   return (
-    <ReactNativeSafeAreaView
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flex: 1,
-        backgroundColor: background,
-      }}>
+    <StyledReactNativeSafeAreaView
+      edges={['right', 'left', 'top']}
+      flex={1}
+      backgroundColor="background">
       {children}
-    </ReactNativeSafeAreaView>
+    </StyledReactNativeSafeAreaView>
   );
 };

@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@shopify/restyle';
 
 import { AllCats, LikedCats } from 'screens';
-import { AllCatsIcon, HeartIcon } from 'assets/icons';
+import { AllCatsIcon, HeartIcon } from 'assets';
 import { Theme } from 'lib';
 
 export type NavigatorParamList = {
@@ -15,10 +15,8 @@ export type NavigatorParamList = {
 
 const Tab = createBottomTabNavigator<NavigatorParamList>();
 
-export const AllScreens: React.FunctionComponent = () => {
-  const theme = useTheme<Theme>();
-  const { primary } = theme.colors;
-  const { tab } = theme.textVariants;
+export const AppScreens: React.FunctionComponent = () => {
+  const { colors, textVariants } = useTheme<Theme>();
 
   return (
     <NavigationContainer>
@@ -30,20 +28,21 @@ export const AllScreens: React.FunctionComponent = () => {
             flex: Platform.OS === 'ios' ? 0.11 : 0.13,
             elevation: 0,
             paddingHorizontal: 35,
+            borderTopColor: '#e6e6e6',
           },
           tabBarItemStyle: {
             height: 48,
             alignSelf: 'center',
             padding: 0,
           },
-          tabBarActiveTintColor: primary,
+          tabBarActiveTintColor: colors.primary,
           /* Static colour used as not repeated anywhere else. */
           tabBarInactiveTintColor: '#d3d3d4',
-          tabBarLabelStyle: tab,
+          tabBarLabelStyle: textVariants.tab,
         }}>
         <Tab.Screen
-          name="All cats"
           component={AllCats}
+          name="All cats"
           options={{
             tabBarIcon: ({ color, size }) => (
               <AllCatsIcon color={color} size={size} />
@@ -51,8 +50,8 @@ export const AllScreens: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name="Cats I like"
           component={LikedCats}
+          name="Cats I like"
           options={{
             tabBarIcon: ({ color, size }) => (
               <HeartIcon color={color} size={size} />

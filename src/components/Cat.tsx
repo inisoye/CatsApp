@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useTheme } from '@shopify/restyle';
-import FastImage from 'react-native-fast-image';
 
-import { Box, Text, Theme } from 'lib';
+import { Box, Text } from 'lib';
 import { useLikedCatsStoreItems } from 'stores';
-import { LikeButton } from './LikeButton';
+import { LikeButton, Image } from 'components';
 
 interface CatProps {
   id: string | undefined;
@@ -13,8 +11,7 @@ interface CatProps {
 }
 
 export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
-  const { spacing, borderRadii } = useTheme<Theme>();
-  const { toggleCat, likedCats } = useLikedCatsStoreItems();
+  const { likedCats, toggleCat } = useLikedCatsStoreItems();
 
   const isCatLiked = React.useMemo(
     () => !!likedCats.find(cat => cat.id === id),
@@ -27,22 +24,20 @@ export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
 
   return (
     <Box
+      alignItems="center"
       flexDirection="row"
       justifyContent="space-between"
-      alignItems="center"
-      paddingHorizontal="l"
-      marginVertical="s">
-      <Box flexDirection="row" alignItems="center">
-        <FastImage
+      marginVertical="s"
+      paddingHorizontal="l">
+      <Box alignItems="center" flexDirection="row">
+        <Image
+          borderRadius="standard"
+          height={40}
           source={{ uri }}
-          style={{
-            borderRadius: borderRadii.standard,
-            height: spacing.xl,
-            width: spacing.xl,
-          }}
+          width={40}
         />
 
-        <Text variant="regular" marginLeft="m">
+        <Text marginLeft="m" variant="regular">
           {name}
         </Text>
       </Box>

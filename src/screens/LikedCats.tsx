@@ -32,6 +32,7 @@ export const LikedCats: React.FunctionComponent<LikedCatsProps> = () => {
           renderItem={renderItem}
           keyExtractor={item => item.id as string}
           numColumns={2}
+          // eslint-disable-next-line react-native/no-inline-styles
           columnWrapperStyle={{
             justifyContent: 'space-between',
             paddingHorizontal: spacing.l,

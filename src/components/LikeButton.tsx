@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Pressable } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 
 import { Theme } from 'lib';
 import { HeartIcon } from 'assets';
+import { Button } from 'components';
 
 interface LikeButtonProps {
   handlePress: () => void;
@@ -14,16 +14,16 @@ export const LikeButton: React.FunctionComponent<LikeButtonProps> = ({
   handlePress,
   isCatLiked,
 }) => {
-  const { spacing, colors } = useTheme<Theme>();
+  const { colors } = useTheme<Theme>();
 
   return (
-    <Pressable
+    <Button
       onPress={handlePress}
       hitSlop={30}
+      marginLeft="m"
       style={({ pressed }) => [
         {
           transform: [{ scale: pressed ? 0.7 : 1 }],
-          marginLeft: spacing.m,
         },
       ]}>
       <HeartIcon
@@ -31,6 +31,6 @@ export const LikeButton: React.FunctionComponent<LikeButtonProps> = ({
         color={isCatLiked ? colors.heart : '#BCBDBE'}
         size={18}
       />
-    </Pressable>
+    </Button>
   );
 };

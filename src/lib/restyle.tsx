@@ -23,10 +23,13 @@ const theme = createTheme({
     s: 10,
     m: 15,
     l: 25,
-    xl: 40,
-    '3xl': 100,
-    '4xl': 150,
-    full: '100%',
+  },
+  breakpoints: {
+    phone: 0,
+    tablet: 768,
+  },
+  borderRadii: {
+    standard: 10,
   },
   textVariants: {
     heading: {
@@ -42,13 +45,6 @@ const theme = createTheme({
       fontSize: 13,
       marginTop: 2,
     },
-  },
-  breakpoints: {
-    phone: 0,
-    tablet: 768,
-  },
-  borderRadii: {
-    standard: 10,
   },
 });
 

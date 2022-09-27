@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image } from 'react-native';
 import { useTheme } from '@shopify/restyle';
+import FastImage from 'react-native-fast-image';
 
 import { Box, Text, Theme } from 'lib';
 import { useLikedCatsStoreItems } from 'stores';
@@ -31,9 +31,8 @@ export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
 
   return (
     <Box marginBottom="l">
-      <Image
+      <FastImage
         source={{ uri }}
-        resizeMode={'cover'}
         style={{
           borderRadius: borderRadii.standard,
           height: spacing['4xl'],

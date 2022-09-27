@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image } from 'react-native';
 import { useTheme } from '@shopify/restyle';
+import FastImage from 'react-native-fast-image';
 
 import { Box, Text, Theme } from 'lib';
 import { useLikedCatsStoreItems } from 'stores';
@@ -33,7 +33,7 @@ export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
       paddingHorizontal="l"
       marginVertical="s">
       <Box flexDirection="row" alignItems="center">
-        <Image
+        <FastImage
           source={{ uri }}
           style={{
             borderRadius: borderRadii.standard,
@@ -41,6 +41,7 @@ export const Cat: React.FunctionComponent<CatProps> = ({ id, name, uri }) => {
             width: spacing.xl,
           }}
         />
+
         <Text variant="regular" marginLeft="m">
           {name}
         </Text>

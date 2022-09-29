@@ -11,7 +11,7 @@ interface LikedCatProps {
   uri: string | undefined;
 }
 
-const childWidth = getGridChildWidth();
+const childWidth = getGridChildWidth(25, 25, 2);
 
 export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
   id,

@@ -18,7 +18,13 @@ export const AllCats: React.FunctionComponent<AllCatsProps> = () => {
   const { data: breeds, isLoading: areBreedsLoading } = useBreeds();
 
   if (areBreedsLoading) {
-    return <Text variant="regular">Loading</Text>;
+    return (
+      <SafeAreaView>
+        <Box padding="l">
+          <Text variant="regular">Loading</Text>
+        </Box>
+      </SafeAreaView>
+    );
   }
 
   return (

@@ -10,14 +10,22 @@ interface LikedCatsListProps {
   likedCats: LikedCatType[];
 }
 
-const renderItem: ListRenderItem<LikedCatType> = ({ item }) => {
-  return <LikedCat name={item.name} uri={item.uri} id={item.id} />;
-};
-
 export const LikedCatsList: React.FunctionComponent<LikedCatsListProps> = ({
   likedCats,
 }) => {
   const { spacing } = useTheme<Theme>();
+  const NUMBER_OF_COLUMNS = 2;
+
+  const renderItem: ListRenderItem<LikedCatType> = ({ item }) => {
+    return (
+      <LikedCat
+        name={item.name}
+        uri={item.uri}
+        id={item.id}
+        numberOfColumns={NUMBER_OF_COLUMNS}
+      />
+    );
+  };
 
   /**
    * Despite its performance benefits, the use of Flashlist forgone here.

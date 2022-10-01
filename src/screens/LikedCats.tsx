@@ -25,7 +25,7 @@ export const LikedCats: React.FunctionComponent<LikedCatsProps> = () => {
 
         {
           /**
-           * Despite its performance benefits, the use of Flashlist forgone here
+           * Despite its performance benefits, the use of Flashlist forgone here.
            * Its column styles are much harder to customise as columnWrapperStyle
            * is not supported: https://shopify.github.io/flash-list/docs/usage#scrolltooffset.
            * */

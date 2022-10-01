@@ -1,30 +1,23 @@
 import * as React from 'react';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { FlashList, type ListRenderItem } from '@shopify/flash-list';
 
-import { Box, type NavigatorParamList, Text } from 'lib';
-import { Cat, SafeAreaView, ScreenHeading } from 'components';
+import { Box, type NavigatorParamList } from 'lib';
+import {
+  CatsList,
+  LoadingScreen,
+  SafeAreaView,
+  ScreenHeading,
+} from 'components';
 import { useBreeds } from 'api';
-import type { Breed } from 'types';
 
 interface AllCatsProps
   extends BottomTabScreenProps<NavigatorParamList, 'All cats'> {}
-
-const renderItem: ListRenderItem<Breed> = ({ item }) => {
-  return <Cat name={item.name} uri={item.image?.url} id={item.id} />;
-};
 
 export const AllCats: React.FunctionComponent<AllCatsProps> = () => {
   const { data: breeds, isLoading: areBreedsLoading } = useBreeds();
 
   if (areBreedsLoading) {
-    return (
-      <SafeAreaView>
-        <Box padding="l">
-          <Text variant="regular">Loading</Text>
-        </Box>
-      </SafeAreaView>
-    );
+    return <LoadingScreen />;
   }
 
   return (
@@ -32,12 +25,7 @@ export const AllCats: React.FunctionComponent<AllCatsProps> = () => {
       <Box flex={1} backgroundColor="background">
         <ScreenHeading />
 
-        <FlashList
-          data={breeds}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          estimatedItemSize={60}
-        />
+        <CatsList breeds={breeds} />
       </Box>
     </SafeAreaView>
   );

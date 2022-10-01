@@ -1,6 +1,7 @@
 import create from 'zustand';
-import { persist, type StateStorage } from 'zustand/middleware';
-import { MMKV } from 'react-native-mmkv';
+import { persist } from 'zustand/middleware';
+
+import { mmkvStorage } from 'utils';
 
 export interface LikedCat {
   id: string | undefined;
@@ -14,22 +15,7 @@ interface LikedCatsStore {
   toggleCat: (cat: LikedCat, isCatLiked: boolean) => void;
 }
 
-const storage = new MMKV();
-
-const mmkvStorage: StateStorage = {
-  setItem: (name, value) => {
-    return storage.set(name, value);
-  },
-  getItem: name => {
-    const value = storage.getString(name);
-    return value ?? null;
-  },
-  removeItem: name => {
-    return storage.delete(name);
-  },
-};
-
-const useLikedCatsStore = create<LikedCatsStore>()(
+export const useLikedCatsStore = create<LikedCatsStore>()(
   persist(
     set => ({
       likedCats: [],

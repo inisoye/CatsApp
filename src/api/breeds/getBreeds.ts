@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { catApiClient } from 'lib';
+import { testCatApiClient } from 'lib';
 import { Breed } from 'types';
 
-export const getBreeds = async (): Promise<Breed[] | undefined> => {
-  const { data } = await catApiClient.get<Breed[]>('/breeds');
+export const getBreeds = async (): Promise<Breed[]> => {
+  const { data } = await testCatApiClient.get<Breed[]>('/breeds');
   return data;
 };
 
-export const useBreeds = () => useQuery(['breeds'], () => getBreeds());
+export const useBreeds = () => useQuery(['breeds'], getBreeds);

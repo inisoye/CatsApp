@@ -3,7 +3,7 @@ import { render } from '@testing-library/react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { rest } from 'msw';
 
-import { generateBreeds } from 'test';
+import { generateBreeds } from 'tests';
 
 export const handlers = [
   rest.get('*/breeds', (req, res, ctx) => {

@@ -70,7 +70,7 @@
       "@react-native"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/src/test/setup.ts"
+      "<rootDir>/src/tests/setup.ts"
     ]
   }
 }

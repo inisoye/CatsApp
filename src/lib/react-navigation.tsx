@@ -13,14 +13,14 @@ export type NavigatorParamList = {
   'Cats I like': undefined;
 };
 
-const Tab = createBottomTabNavigator<NavigatorParamList>();
+const { Navigator, Screen } = createBottomTabNavigator<NavigatorParamList>();
 
 export const AppScreens: React.FunctionComponent = () => {
   const { colors, textVariants } = useTheme<Theme>();
 
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Navigator
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
@@ -40,16 +40,18 @@ export const AppScreens: React.FunctionComponent = () => {
           tabBarInactiveTintColor: '#d3d3d4',
           tabBarLabelStyle: textVariants.tab,
         }}>
-        <Tab.Screen
+        <Screen
           component={AllCats}
           name="All cats"
           options={{
             tabBarIcon: ({ color, size }) => (
               <AllCatsIcon color={color} size={size} />
             ),
+
+            tabBarTestID: 'menu-tab',
           }}
         />
-        <Tab.Screen
+        <Screen
           component={LikedCats}
           name="Cats I like"
           options={{
@@ -58,7 +60,7 @@ export const AppScreens: React.FunctionComponent = () => {
             ),
           }}
         />
-      </Tab.Navigator>
+      </Navigator>
     </NavigationContainer>
   );
 };

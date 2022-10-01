@@ -1,18 +1,15 @@
 import { renderHook, act } from '@testing-library/react-native';
 
-import { useLikedCatsStore, LikedCat } from 'stores';
+import { useLikedCatsStore } from 'stores';
+import { generateRandomCat } from 'tests';
 
 describe('useLikedCatsStore()', () => {
-  test('Should enable liking and unliking cats', () => {
+  test('Cats can be successfuly liked or unliked', () => {
     const { result } = renderHook(() => useLikedCatsStore());
 
     expect(result.current.likedCats.length).toBe(0);
 
-    const randomCat: LikedCat = {
-      id: '123456',
-      name: 'A random cat',
-      uri: 'https://cats.cats.com',
-    };
+    const randomCat = generateRandomCat();
 
     act(() => {
       result.current.toggleCat(randomCat, false);

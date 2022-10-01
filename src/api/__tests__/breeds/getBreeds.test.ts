@@ -12,7 +12,7 @@ describe('useBreeds()', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.[0].weight).toBeTruthy();
+    expect(result.current.data?.[0].weight).toBeDefined();
   });
 
   test('Returns errors in right format on failure', async () => {

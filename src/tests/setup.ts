@@ -11,3 +11,12 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 // Clean up after the tests are finished.
 afterAll(() => server.close());
+
+jest.mock('@shopify/restyle', () => {
+  const RealModule = jest.requireActual('@shopify/restyle');
+  const RN = jest.requireActual('react-native');
+  RealModule.createText = () => RN.Text;
+  RealModule.createBox = () => RN.View;
+  RealModule.createRestyleComponent = (f: any, c: any) => c || RN.View;
+  return RealModule;
+});

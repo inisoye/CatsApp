@@ -19,6 +19,7 @@ export const LikeButton: React.FunctionComponent<LikeButtonProps> = ({
   return (
     <Button
       onPress={handlePress}
+      accessibilityLabel={isCatLiked ? 'Unlike this cat' : 'Like this cat'}
       hitSlop={30}
       marginLeft="m"
       style={({ pressed }) => [

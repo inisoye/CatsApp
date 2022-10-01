@@ -55,3 +55,13 @@ export const generateBreed = (overrides?: Overrides) => ({
 export const generateBreeds = (numOfBreeds = 5) => {
   return Array.from({ length: numOfBreeds }, generateBreed);
 };
+
+export const generateRandomCat = () => {
+  const {
+    id,
+    name,
+    image: { url: uri },
+  } = generateBreed();
+
+  return { id, name, uri };
+};

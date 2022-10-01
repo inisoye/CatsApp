@@ -12,6 +12,8 @@ A simple cat breeds directory.
 
 ### Splash Screen
 
+<img src="/screenshots/android-splash.png?raw=true" width="48">
+
 ![Alt text](/screenshots/android-splash.png?raw=true 'Android Splash Screen')
 ![Alt text](/screenshots/ios-splash.png?raw=true 'Android Splash Screen')
 

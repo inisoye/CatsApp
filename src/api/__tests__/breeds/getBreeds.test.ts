@@ -1,12 +1,12 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 import { rest } from 'msw';
 
-import { useBreeds } from 'api';
+import { useTestBreeds } from 'api';
 import { createWrapper, server } from 'tests';
 
 describe('useBreeds()', () => {
   test('Returns cat data successfully', async () => {
-    const { result } = renderHook(() => useBreeds(), {
+    const { result } = renderHook(() => useTestBreeds(), {
       wrapper: createWrapper(),
     });
 
@@ -22,7 +22,7 @@ describe('useBreeds()', () => {
       }),
     );
 
-    const { result } = renderHook(() => useBreeds(), {
+    const { result } = renderHook(() => useTestBreeds(), {
       wrapper: createWrapper(),
     });
 

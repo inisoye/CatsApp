@@ -12,20 +12,18 @@ A simple cat breeds directory.
 
 ### Splash Screen
 
-<img src="/screenshots/android-splash.png?raw=true" width="48">
-
-![Alt text](/screenshots/android-splash.png?raw=true 'Android Splash Screen')
-![Alt text](/screenshots/ios-splash.png?raw=true 'Android Splash Screen')
+<img src="/screenshots/android-splash.png?raw=true" width="200" alt="Android Splash Screen">
+<img src="/screenshots/ios-splash.png?raw=true" width="200" alt="iOS Splash Screen">
 
 ### Cats List Screen
 
-![Alt text](/screenshots/android-list.png?raw=true 'Android Splash Screen')
-![Alt text](/screenshots/ios-list.png?raw=true 'Android Splash Screen')
+<img src="/screenshots/android-list.png?raw=true" width="200" alt="Android List Screen">
+<img src="/screenshots/ios-list.png?raw=true" width="200" alt="iOS List Screen">
 
 ### Liked Cats Screen
 
-![Alt text](/screenshots/android-faves.png?raw=true 'Android Splash Screen')
-![Alt text](/screenshots/ios-faves.png?raw=true 'Android Splash Screen')
+<img src="/screenshots/android-faves.png?raw=true" width="200" alt="Android Faves Screen">
+<img src="/screenshots/ios-faves.png?raw=true" width="200" alt="iOS Faves Screen">
 
 ## Environment Variables
 

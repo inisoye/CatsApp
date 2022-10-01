@@ -20,7 +20,9 @@ export const LikedCats: React.FunctionComponent<LikedCatsProps> = () => {
           <LikedCatsList likedCats={likedCats} />
         ) : (
           <Box paddingHorizontal="l">
-            <Text variant="regular">No likes yet</Text>
+            <Text variant="regular" opacity={0.5}>
+              No likes yet
+            </Text>
           </Box>
         )}
       </Box>

@@ -37,7 +37,7 @@ export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
     <Box marginBottom="l">
       <Image
         borderRadius="standard"
-        height={150}
+        height={childWidth}
         source={{ uri }}
         width={childWidth}
       />
@@ -46,7 +46,7 @@ export const LikedCat: React.FunctionComponent<LikedCatProps> = ({
         flexDirection="row"
         justifyContent="space-between"
         marginTop="s"
-        width={150}>
+        width={childWidth}>
         <Box maxWidth={'78%'}>
           <Text variant="regular">{name}</Text>
         </Box>

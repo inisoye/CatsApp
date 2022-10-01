@@ -11,7 +11,9 @@ export const LoadingScreen: React.FunctionComponent<
   return (
     <SafeAreaView>
       <Box padding="l">
-        <Text variant="regular">Loading</Text>
+        <Text variant="regular" opacity={0.5}>
+          Loading
+        </Text>
       </Box>
     </SafeAreaView>
   );
